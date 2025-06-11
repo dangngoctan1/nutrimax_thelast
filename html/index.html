@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriMax - Trang Chủ</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="javascript/global.js" defer></script>
+    <script src="javascript/index.js" defer></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">NutriMax</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="tools.html">Công Cụ</a></li>
+                <li><a href="nutrition-info.html">Thông Tin Dinh Dưỡng</a></li>
+                <li><a href="login.html">Tài Khoản</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Khám phá thế giới dinh dưỡng cùng NutriMax</h1>
+            <p>Công cụ tính toán dinh dưỡng thông minh, thực đơn cá nhân hóa và kiến thức khoa học để bạn sống khỏe mạnh hơn mỗi ngày</p>
+            <a href="#search" class="btn primary">Bắt đầu ngay</a>
+            <a href="nutrition-info.html" class="btn secondary">Tìm hiểu thêm</a>
+        </div>
+        <div class="hero-image">
+            <img src="images/hero/hero-main.jpg" alt="Cuộc sống lành mạnh">
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section id="search" class="search-section">
+        <h2>Tìm kiếm thực phẩm</h2>
+        <form>
+            <input type="text" placeholder="Nhập tên thực phẩm bạn muốn tìm (VD: táo, thịt bò, cơm trắng...)">
+            <button type="submit"><img src="images/icons/search-icon.svg" alt="Tìm kiếm"></button>
+        </form>
+        <div class="suggestions">
+            <span>Thịt bò</span>
+            <span>Cơm trắng</span>
+            <span>Táo xanh</span>
+            <span>Cà chua</span>
+            <span>Trứng gà</span>
+            <span>Chuối</span>
+        </div>
+    </section>
+
+    <!-- Carousel Section -->
+    <section class="carousel">
+        <div class="carousel-container">
+            <img src="images/carousel/pic1CS.jpg" alt="Cân bằng dinh dưỡng">
+            <img src="images/carousel/pic2CS.jpg" alt="Tập luyện lành mạnh">
+            <img src="images/carousel/pic3CS.jpg" alt="Siêu thực phẩm">
+            <img src="images/carousel/pic4CS.jpg" alt="Nấu ăn gia đình">
+            <img src="images/carousel/pic5CS.jpg" alt="Sinh tố bổ dưỡng">
+        </div>
+        <div class="carousel-controls">
+            <button class="prev"><img src="images/icons/arrow-left.svg" alt="Trước"></button>
+            <button class="next"><img src="images/icons/arrow-right.svg" alt="Tiếp"></button>
+        </div>
+    </section>
+
+    <!-- Filter Tabs -->
+    <section class="filter-tabs">
+        <div class="tab" data-category="meat">
+            <img src="images/icons/meat-icon.svg" alt="Thịt tươi">
+            <span>Thịt tươi</span>
+        </div>
+        <div class="tab" data-category="vegetables">
+            <img src="images/icons/vegetable-icon.svg" alt="Rau củ">
+            <span>Rau củ tươi xanh</span>
+        </div>
+        <div class="tab" data-category="fruits">
+            <img src="images/icons/fruit-icon.svg" alt="Trái cây">
+            <span>Trái cây bổ dưỡng</span>
+        </div>
+        <div class="tab" data-category="carbs">
+            <img src="images/icons/carb-icon.svg" alt="Tinh bột">
+            <span>Thực phẩm giàu tinh bột</span>
+        </div>
+    </section>
+
+    <!-- Food Grid -->
+    <section class="food-grid">
+        <!-- Các card thực phẩm sẽ được chèn động qua JavaScript -->
+    </section>
+
+    <!-- Current Meal Panel -->
+    <aside class="meal-panel">
+        <h3>Thực đơn hiện tại</h3>
+        <div class="meal-items">
+            <!-- Các món ăn sẽ được chèn động qua JavaScript -->
+        </div>
+        <div class="meal-summary">
+            <p>Tổng calo: <span>0</span> calo</p>
+            <p>Tổng protein: <span>0</span> g</p>
+        </div>
+        <button class="clear-meal">Xóa tất cả</button>
+        <button class="save-meal">Lưu thực đơn</button>
+        <button class="share-meal">Chia sẻ</button>
+    </aside>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h4>Về NutriMax</h4>
+                <p>Đồng hành cùng bạn trên hành trình dinh dưỡng lành mạnh</p>
+                <p>Địa chỉ: 123 Đường ABC, Quận XYZ, TP. HCM</p>
+                <p>Email: info@nutrimax.com</p>
+                <p>Hotline: 0123 456 789</p>
+            </div>
+            <div class="footer-section links">
+                <h4>Liên kết nhanh</h4>
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="tools.html">Công cụ</a></li>
+                    <li><a href="nutrition-info.html">Thông tin dinh dưỡng</a></li>
+                    <li><a href="contact.html">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section tools">
+                <h4>Công cụ phổ biến</h4>
+                <ul>
+                    <li><a href="tools.html#bmi">Tính BMI</a></li>
+                    <li><a href="tools.html#calories">Tính calo</a></li>
+                    <li><a href="tools.html#meal-plan">Thực đơn cá nhân</a></li>
+                    <li><a href="tools.html#health-tracker">Theo dõi sức khỏe</a></li>
+                </ul>
+            </div>
+            <div class="footer-section connect">
+                <h4>Kết nối với chúng tôi</h4>
+                <div class="social-icons">
+                    <a href="#"><img src="images/icons/facebook.svg" alt="Facebook"></a>
+                    <a href="#"><img src="images/icons/instagram.svg" alt="Instagram"></a>
+                    <a href="#"><img src="images/icons/youtube.svg" alt="YouTube"></a>
+                </div>
+                <form class="newsletter">
+                    <input type="email" placeholder="Nhập email của bạn">
+                    <button type="submit">Đăng ký</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 NutriMax. All rights reserved.</p>
+            <a href="terms.html">Điều khoản sử dụng</a>
+            <a href="privacy.html">Chính sách bảo mật</a>
+        </div>
+    </footer>
+</body>
+</html>
