@@ -1,0 +1,562 @@
+/* ===== RESPONSIVE.CSS - MEDIA QUERIES CHO TẤT CẢ TRANG ===== */
+
+/* ===== BREAKPOINTS ===== */
+/* Large Desktop: 1400px+ */
+/* Desktop: 1024px - 1399px */
+/* Tablet Landscape: 768px - 1023px */
+/* Tablet Portrait: 481px - 767px */
+/* Mobile: 320px - 480px */
+
+/* ===== HEADER RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  header {
+    padding: 15px 30px;
+  }
+  
+  header .logo {
+    font-size: 22px;
+  }
+  
+  header nav ul {
+    gap: 15px;
+  }
+  
+  header nav ul li a {
+    font-size: 15px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  header nav ul {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  header .logo {
+    font-size: 20px;
+  }
+  
+  header nav ul {
+    gap: 10px;
+  }
+  
+  header nav ul li a {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}
+
+/* ===== INDEX.HTML RESPONSIVE ===== */
+
+/* Hero Section */
+@media (max-width: 1024px) {
+  .hero {
+    gap: 40px;
+    padding: 60px 30px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.8rem;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 20px;
+    gap: 40px;
+    min-height: 70vh;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+  
+  .hero-content .btn {
+    font-size: 1rem;
+    padding: 14px 28px;
+  }
+  
+  .hero-image::before {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 40px 15px;
+    min-height: 60vh;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+  }
+  
+  .hero-content p {
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+  
+  .hero-content .btn {
+    display: block;
+    margin-bottom: 12px;
+    margin-right: 0;
+    font-size: 0.95rem;
+    padding: 12px 24px;
+  }
+}
+
+/* Search Section */
+@media (max-width: 1024px) {
+  .search-section {
+    padding: 60px 30px;
+  }
+  
+  .search-section h2 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-section {
+    padding: 60px 20px;
+  }
+  
+  .search-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .search-section form {
+    margin-bottom: 30px;
+  }
+  
+  .search-section input {
+    padding: 16px 20px;
+    font-size: 1rem;
+  }
+  
+  .search-section button {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-section {
+    padding: 40px 15px;
+  }
+  
+  .search-section h2 {
+    font-size: 1.7rem;
+  }
+  
+  .search-section input {
+    padding: 14px 18px;
+    font-size: 0.95rem;
+  }
+  
+  .search-section button {
+    width: 40px;
+    height: 40px;
+    right: 6px;
+  }
+  
+  .suggestions {
+    gap: 8px;
+  }
+  
+  .suggestions span {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Carousel */
+@media (max-width: 1024px) {
+  .carousel {
+    margin: 60px 30px;
+  }
+  
+  .carousel-container {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    margin: 60px 20px;
+  }
+  
+  .carousel-container {
+    height: 300px;
+  }
+  
+  .carousel-controls {
+    padding: 0 15px;
+  }
+  
+  .carousel-controls button {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .carousel-controls img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel {
+    margin: 40px 15px;
+  }
+  
+  .carousel-container {
+    height: 250px;
+  }
+  
+  .carousel-controls {
+    padding: 0 10px;
+  }
+  
+  .carousel-controls button {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Filter Tabs */
+@media (max-width: 1024px) {
+  .filter-tabs {
+    padding: 50px 30px;
+    gap: 16px;
+  }
+  
+  .tab {
+    min-width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .filter-tabs {
+    padding: 40px 20px;
+    gap: 12px;
+  }
+  
+  .tab {
+    min-width: 140px;
+    padding: 20px;
+  }
+  
+  .tab img {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .tab span {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 30px 15px;
+    gap: 10px;
+  }
+  
+  .tab {
+    min-width: auto;
+    padding: 16px;
+  }
+  
+  .tab img {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .tab span {
+    font-size: 0.85rem;
+  }
+}
+
+/* Food Grid */
+@media (max-width: 1024px) {
+  .food-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    padding: 0 30px 60px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .food-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    padding: 0 20px 60px;
+    gap: 20px;
+  }
+  
+  .food-card img {
+    height: 160px;
+  }
+  
+  .food-card-content {
+    padding: 16px;
+  }
+  
+  .food-card h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .food-grid {
+    grid-template-columns: 1fr;
+    padding: 0 15px 40px;
+    gap: 16px;
+  }
+  
+  .food-card img {
+    height: 180px;
+  }
+  
+  .food-stats {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  
+  .stat {
+    font-size: 0.8rem;
+  }
+  
+  .add-btn {
+    align-self: flex-end;
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+}
+
+/* Meal Panel */
+@media (max-width: 1024px) {
+  .meal-panel {
+    width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .meal-panel {
+    width: 100%;
+    right: -100%;
+  }
+  
+  .meal-panel h3 {
+    font-size: 1.3rem;
+  }
+  
+  .meal-items {
+    max-height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .meal-panel {
+    padding: 20px 16px;
+  }
+  
+  .meal-panel h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .meal-items {
+    max-height: 200px;
+  }
+  
+  .meal-item {
+    padding: 10px 0;
+  }
+  
+  .meal-item span {
+    font-size: 0.9rem;
+  }
+  
+  .meal-summary {
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .meal-panel button {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== FOOTER RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  footer {
+    padding: 30px 20px;
+  }
+  
+  .footer-content {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer-section {
+    margin-bottom: 20px;
+  }
+  
+  .newsletter {
+    justify-content: center;
+  }
+  
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-section h4 {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  
+  .footer-section p,
+  .footer-section ul li {
+    font-size: 13px;
+  }
+  
+  .newsletter {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .newsletter input {
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .newsletter button {
+    border-radius: 5px;
+  }
+  
+  .footer-bottom {
+    font-size: 12px;
+  }
+  
+  .footer-bottom a {
+    display: block;
+    margin: 5px 0;
+  }
+}
+
+/* ===== COMMON RESPONSIVE UTILITIES ===== */
+
+/* Button Responsive */
+@media (max-width: 768px) {
+  .btn {
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+/* Typography Responsive */
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.7rem; }
+  h3 { font-size: 1.4rem; }
+  h4 { font-size: 1.2rem; }
+  
+  p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.7rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.2rem; }
+  h4 { font-size: 1.1rem; }
+  
+  p {
+    font-size: 14px;
+  }
+}
+
+/* Loading Animation Responsive */
+@media (max-width: 480px) {
+  .loading {
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
+  }
+}
+
+/* Scroll Bar Responsive */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .btn:hover,
+  .tab:hover,
+  .food-card:hover,
+  .suggestions span:hover {
+    transform: none;
+  }
+  
+  .btn:active,
+  .tab:active,
+  .food-card:active {
+    transform: scale(0.98);
+  }
+  
+  /* Increase touch targets */
+  .carousel-controls button,
+  .add-btn,
+  .meal-item button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
