@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriMax - Hồ Sơ Cá Nhân</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <script src="javascript/global.js" defer></script>
+    <script src="javascript/profile.js" defer></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">NutriMax</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="tools.html">Công Cụ</a></li>
+                <li><a href="nutrition-info.html">Thông Tin Dinh Dưỡng</a></li>
+                <li><a href="login.html">Tài Khoản</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Profile Sections -->
+    <section class="profile">
+        <h1>Hồ Sơ Cá Nhân</h1>
+        <div class="profile-info">
+            <h2>Thông tin cá nhân</h2>
+            <p>Họ tên: <span id="fullname"></span></p>
+            <p>Email: <span id="email"></span></p>
+            <button id="edit-info">Chỉnh sửa</button>
+            <form id="edit-form" style="display: none;">
+                <label for="edit-fullname">Họ và tên:</label>
+                <input type="text" id="edit-fullname" required>
+                <label for="edit-email">Email:</label>
+                <input type="email" id="edit-email" required>
+                <button type="submit">Lưu thay đổi</button>
+            </form>
+        </div>
+        <div class="nutrition-goals">
+            <h2>Mục tiêu dinh dưỡng</h2>
+            <p>Calo mục tiêu: <span id="calorie-goal"></span> calo/ngày</p>
+            <form id="goal-form">
+                <label for="calorie-target">Calo mục tiêu:</label>
+                <input type="number" id="calorie-target" required>
+                <button type="submit">Cập nhật</button>
+            </form>
+        </div>
+        <div class="meal-tracking">
+            <h2>Theo dõi thực đơn</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ngày</th>
+                        <th>Tổng calo</th>
+                        <th>Tổng protein</th>
+                    </tr>
+                </thead>
+                <tbody id="meal-history">
+                    <!-- Dữ liệu sẽ được chèn động qua JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h4>Về NutriMax</h4>
+                <p>Đồng hành cùng bạn trên hành trình dinh dưỡng lành mạnh</p>
+                <p>Địa chỉ: 123 Đường ABC, Quận XYZ, TP. HCM</p>
+                <p>Email: info@nutrimax.com</p>
+                <p>Hotline: 0123 456 789</p>
+            </div>
+            <div class="footer-section links">
+                <h4>Liên kết nhanh</h4>
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="tools.html">Công cụ</a></li>
+                    <li><a href="nutrition-info.html">Thông tin dinh dưỡng</a></li>
+                    <li><a href="contact.html">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section tools">
+                <h4>Công cụ phổ biến</h4>
+                <ul>
+                    <li><a href="tools.html#bmi">Tính BMI</a></li>
+                    <li><a href="tools.html#calories">Tính calo</a></li>
+                    <li><a href="tools.html#meal-plan">Thực đơn cá nhân</a></li>
+                    <li><a href="tools.html#health-tracker">Theo dõi sức khỏe</a></li>
+                </ul>
+            </div>
+            <div class="footer-section connect">
+                <h4>Kết nối với chúng tôi</h4>
+                <div class="social-icons">
+                    <a href="#"><img src="images/icons/facebook.svg" alt="Facebook"></a>
+                    <a href="#"><img src="images/icons/instagram.svg" alt="Instagram"></a>
+                    <a href="#"><img src="images/icons/youtube.svg" alt="YouTube"></a>
+                </div>
+                <form class="newsletter">
+                    <input type="email" placeholder="Nhập email của bạn">
+                    <button type="submit">Đăng ký</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 NutriMax. All rights reserved.</p>
+            <a href="terms.html">Điều khoản sử dụng</a>
+            <a href="privacy.html">Chính sách bảo mật</a>
+        </div>
+    </footer>
+</body>
+</html>
