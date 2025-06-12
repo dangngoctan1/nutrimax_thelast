@@ -13,6 +13,11 @@ const saveMealButton = document.querySelector(".save-meal");
 const clearMealButton = document.querySelector(".clear-meal");
 const shareMealButton = document.querySelector(".share-meal");
 
+// --- START: Mã được thêm vào ---
+const header = document.querySelector("header");
+const mainContainer = document.querySelector(".main-container");
+// --- END: Mã được thêm vào ---
+
 let meal = [];
 let currentCategory = "all";
 let searchTerm = "";
@@ -155,6 +160,19 @@ filterTabs.forEach((tab) => {
       currentCategory = this.dataset.category;
     }
     filterFoods();
+
+    // --- START: Mã được thêm vào để cuộn trang ---
+    if (header && mainContainer) {
+      const headerHeight = header.offsetHeight;
+      const mainContainerTop = mainContainer.offsetTop;
+      const scrollPosition = mainContainerTop - headerHeight - 20; // 20px để tạo khoảng đệm
+
+      window.scrollTo({
+        top: scrollPosition,
+        behavior: "smooth",
+      });
+    }
+    // --- END: Mã được thêm vào để cuộn trang ---
   });
 });
 
