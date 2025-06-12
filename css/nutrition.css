@@ -1,0 +1,297 @@
+/* Nutrition Info Page Styles */
+
+/* Main nutrition section */
+.nutrition-info {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f8fffe 0%, #e8f5f3 100%);
+    min-height: 100vh;
+}
+
+.nutrition-info h1 {
+    text-align: center;
+    color: #2d5a27;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(45, 90, 39, 0.1);
+}
+
+.nutrition-info > p {
+    text-align: center;
+    color: #4a7c59;
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+/* Accordion Styles */
+.accordion {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(45, 90, 39, 0.1);
+    overflow: hidden;
+    border: 1px solid #e0f2e7;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #e0f2e7;
+    transition: all 0.3s ease;
+}
+
+.accordion-item:last-child {
+    border-bottom: none;
+}
+
+.accordion-item:hover {
+    background: #f8fffe;
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 25px 30px;
+    background: linear-gradient(135deg, #4a7c59 0%, #2d5a27 100%);
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.accordion-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.accordion-header:hover::before {
+    left: 100%;
+}
+
+.accordion-header::after {
+    content: '+';
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.accordion-header:hover {
+    background: linear-gradient(135deg, #5a8c69 0%, #3d6a37 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(45, 90, 39, 0.3);
+}
+
+.accordion-content {
+    display: none;
+    padding: 30px;
+    background: white;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.accordion-content h3 {
+    color: #2d5a27;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 25px 0 15px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0f2e7;
+    position: relative;
+}
+
+.accordion-content h3::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, #4a7c59, #2d5a27);
+}
+
+.accordion-content p {
+    color: #333;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.accordion-content ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.accordion-content li {
+    color: #333;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.accordion-content li::marker {
+    color: #4a7c59;
+}
+
+.accordion-content ol {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.accordion-content ol li {
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.accordion-content strong {
+    color: #2d5a27;
+    font-weight: 600;
+}
+
+/* FAQ Form Styles */
+.faq-form {
+    background: linear-gradient(135deg, #f8fffe 0%, #e8f5f3 100%);
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 25px;
+    border: 1px solid #e0f2e7;
+}
+
+.faq-form input,
+.faq-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 2px solid #e0f2e7;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.faq-form input:focus,
+.faq-form textarea:focus {
+    outline: none;
+    border-color: #4a7c59;
+    box-shadow: 0 0 0 3px rgba(74, 124, 89, 0.1);
+    transform: translateY(-2px);
+}
+
+.faq-form textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+}
+
+.faq-form .btn {
+    background: linear-gradient(135deg, #4a7c59 0%, #2d5a27 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.faq-form .btn:hover {
+    background: linear-gradient(135deg, #5a8c69 0%, #3d6a37 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(45, 90, 39, 0.3);
+}
+
+.faq-form .btn.primary {
+    position: relative;
+    overflow: hidden;
+}
+
+.faq-form .btn.primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.faq-form .btn.primary:hover::before {
+    left: 100%;
+}
+
+/* Responsive Design Elements */
+@media (max-width: 768px) {
+    .nutrition-info h1 {
+        font-size: 2rem;
+    }
+    
+    .accordion-header {
+        padding: 20px;
+        font-size: 1.1rem;
+    }
+    
+    .accordion-content {
+        padding: 20px;
+    }
+    
+    .accordion-header::after {
+        right: 20px;
+    }
+}
+
+/* Accessibility Improvements */
+.accordion-header:focus {
+    outline: 3px solid #4a7c59;
+    outline-offset: 2px;
+}
+
+.faq-form input:focus,
+.faq-form textarea:focus,
+.faq-form .btn:focus {
+    outline: 3px solid #4a7c59;
+    outline-offset: 2px;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Print Styles */
+@media print {
+    .accordion-content {
+        display: block !important;
+    }
+    
+    .accordion-header::after {
+        display: none;
+    }
+    
+    .faq-form {
+        display: none;
+    }
+}

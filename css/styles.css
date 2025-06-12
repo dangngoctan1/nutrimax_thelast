@@ -10,7 +10,7 @@ body {
   background-color: #FFFFFF;
   color: #424242;
   line-height: 1.6;
-  cursor: default; /* Kiểu chuột mặc định */
+  cursor: default;
 }
 
 /* Biến màu toàn cục */
@@ -44,94 +44,156 @@ a {
   color: var(--blue);
   text-decoration: none;
   transition: color 0.3s ease;
-  cursor: pointer; /* Kiểu chuột cho liên kết */
+  cursor: pointer;
 }
 
 a:hover {
   color: var(--dark-blue);
 }
 
-/* Module: Header và Thanh điều hướng */
+/* Module: Header và Thanh điều hướng - Updated */
 header {
-  background-color: var(--white);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, var(--white) 0%, #f8fbf8 100%);
+  box-shadow: 0 4px 20px rgba(76, 175, 80, 0.1);
   padding: 20px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
 }
 
 header .logo {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 28px;
+  font-weight: 800;
   color: var(--primary-green);
+  text-shadow: 0 2px 4px rgba(76, 175, 80, 0.2);
+  letter-spacing: -0.5px;
 }
 
 header nav ul {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 8px;
+  align-items: center;
+}
+
+header nav ul li {
+  position: relative;
 }
 
 header nav ul li a {
   font-size: 16px;
+  font-weight: 500;
   color: var(--dark-gray);
-  padding: 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  padding: 12px 20px;
+  border-radius: 25px;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-header nav ul li a:hover {
-  background-color: var(--light-green);
-  color: var(--dark-green);
+header nav ul li a:hover, header nav ul li a:focus {
+  color: var(--primary-green);
+  background: #e8f5e9;
+  /* Không đổi padding, không đổi border, không đổi box-shadow để tránh nhấp nháy */
+}
+
+header nav ul li a:hover::before {
+  left: 100%;
+}
+
+header nav ul li a.active {
+  background: var(--primary-green);
+  color: var(--white);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
 }
 
 /* Module: Nút chung */
 .btn {
   display: inline-block;
   padding: 12px 24px;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   text-align: center;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
 }
 
 .btn.primary {
-  background-color: var(--primary-green);
+  background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
   color: var(--white);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
 }
 
 .btn.primary:hover {
-  background-color: var(--dark-green);
+  background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
 }
 
 .btn.secondary {
-  background-color: transparent;
+  background: transparent;
   border: 2px solid var(--primary-green);
   color: var(--primary-green);
 }
 
 .btn.secondary:hover {
-  background-color: var(--light-green);
-  color: var(--dark-green);
+  background: var(--primary-green);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
 }
 
 .btn.cta {
-  background-color: var(--orange);
+  background: linear-gradient(135deg, var(--orange), #FF6F00);
   color: var(--white);
+  box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
 }
 
 .btn.cta:hover {
-  background-color: #F57C00;
+  background: linear-gradient(135deg, #F57C00, var(--orange));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4);
 }
 
 /* Module: Footer */
 footer {
-  background-color: var(--dark-green);
+  background: linear-gradient(135deg, var(--dark-green) 0%, #1B5E20 100%);
   color: var(--white);
-  padding: 40px 20px;
+  padding: 60px 20px 20px;
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-green), var(--accent-green), var(--orange));
 }
 
 .footer-content {
@@ -139,7 +201,7 @@ footer {
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  gap: 20px;
+  gap: 40px;
 }
 
 .footer-section {
@@ -147,84 +209,127 @@ footer {
 }
 
 .footer-section h4 {
-  font-size: 18px;
-  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--accent-green);
 }
 
 .footer-section p,
 .footer-section ul li {
   font-size: 14px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  line-height: 1.6;
 }
 
 .footer-section ul {
   list-style: none;
 }
 
-.footer-section a {
-  color: var(--light-green);
-  transition: color 0.3s ease;
+.footer-section ul li a {
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  padding: 4px 0;
+  display: inline-block;
 }
 
-.footer-section a:hover {
+.footer-section ul li a:hover {
   color: var(--accent-green);
+  transform: translateX(5px);
 }
 
 .newsletter {
   display: flex;
-  margin-top: 20px;
+  margin-top: 24px;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .newsletter input {
-  padding: 12px;
+  padding: 14px 20px;
   border: none;
-  border-radius: 5px 0 0 5px;
   font-size: 16px;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--dark-gray);
+}
+
+.newsletter input::placeholder {
+  color: var(--medium-gray);
 }
 
 .newsletter button {
-  padding: 12px 24px;
+  padding: 14px 24px;
   border: none;
-  background-color: var(--orange);
+  background: linear-gradient(135deg, var(--orange), #FF6F00);
   color: var(--white);
-  border-radius: 0 5px 5px 0;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  font-weight: 600;
 }
 
 .newsletter button:hover {
-  background-color: #F57C00;
+  background: linear-gradient(135deg, #F57C00, var(--orange));
+  transform: scale(1.05);
 }
 
 .social-icons {
   display: flex;
-  gap: 10px;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.social-icons a {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-icons a:hover {
+  background: var(--accent-green);
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 8px 20px rgba(102, 187, 106, 0.4);
 }
 
 .social-icons img {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
 }
 
 .footer-bottom {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 14px;
+  opacity: 0.8;
 }
 
 .footer-bottom a {
-  color: var(--light-green);
-  margin: 0 10px;
+  color: var(--accent-green);
+  margin: 0 15px;
+  transition: color 0.3s ease;
+}
+
+.footer-bottom a:hover {
+  color: var(--white);
 }
 
 /* Module: Các phần nhỏ khác */
 ::selection {
-  background-color: var(--accent-green);
+  background: linear-gradient(135deg, var(--accent-green), var(--primary-green));
   color: var(--white);
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
@@ -232,10 +337,40 @@ footer {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-green);
-  border-radius: 5px;
+  background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+  border-radius: 6px;
+  border: 2px solid var(--light-gray);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--dark-green);
+  background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.pulse {
+  animation: pulse 2s infinite;
 }

@@ -38,11 +38,13 @@ function calculateTotals() {
   meal.forEach(item => {
     const food = foods.find(f => f.name === item.name);
     const quantity = item.quantity;
-    totalC += (food.calories / 100) * quantity;
-    totalP += (food.protein / 100) * quantity;
+    if (food) {
+      totalC += (food.calories / 100) * quantity;
+      totalP += (food.protein / 100) * quantity;
+    }
   });
-  totalCalo.textContent = totalC.toFixed(2);
-  totalProtein.textContent = totalP.toFixed(2);
+  if (totalCalo) totalCalo.textContent = totalC.toFixed(2);
+  if (totalProtein) totalProtein.textContent = totalP.toFixed(2);
 }
 
 function renderMeal() {
@@ -56,9 +58,11 @@ function renderMeal() {
       <span>${food.name}</span>
       <input type="number" value="${item.quantity}" min="1" step="1" data-index="${index}">
       <span>Calo: ${(food.calories / 100 * item.quantity).toFixed(2)}</span>
-      <span>Protein: ${(food.protein / 100 * item.quantity).toFixed(2)}g</span>
       <button class="remove-item" data-index="${index}">X</button>
     `;
+    div.style.display = 'flex';
+    div.style.alignItems = 'center';
+    div.style.gap = '12px';
     mealItems.appendChild(div);
   });
   calculateTotals();
