@@ -1,4 +1,145 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const calculateBtnBmi = document.getElementById("calculate-btn-bmi");
+  const resultAreaBmi = document.getElementById("result-area-bmi");
+
+  // Hàm xử lý việc chuyển đổi active class cho các nhóm nút
+  function setupToggleBmi(groupId) {
+    const group = document.getElementById(groupId);
+    if (group) {
+      group.addEventListener("click", (e) => {
+        if (e.target.tagName === "BUTTON") {
+          const buttons = group.querySelectorAll("button");
+          buttons.forEach((btn) => btn.classList.remove("active"));
+          e.target.classList.add("active");
+        }
+      });
+    }
+  }
+
+  // Khởi tạo cho các nhóm nút trong BMI
+  setupToggleBmi("gender-group");
+  setupToggleBmi("height-unit-group");
+  setupToggleBmi("weight-unit-group");
+
+  if (calculateBtnBmi) {
+    calculateBtnBmi.addEventListener("click", () => {
+      const age = parseFloat(document.getElementById("age-bmi").value);
+      let height = parseFloat(document.getElementById("height-bmi").value);
+      let weight = parseFloat(document.getElementById("weight-bmi").value);
+
+      const heightUnit = document.querySelector("#height-unit-group .active")
+        .dataset.unit;
+      const weightUnit = document.querySelector("#weight-unit-group .active")
+        .dataset.unit;
+
+      if (
+        isNaN(age) ||
+        isNaN(height) ||
+        isNaN(weight) ||
+        age <= 0 ||
+        height <= 0 ||
+        weight <= 0
+      ) {
+        resultAreaBmi.innerHTML = `<p style="color: #dc3545;">Vui lòng nhập đầy đủ và chính xác các thông tin.</p>`;
+        resultAreaBmi.style.backgroundColor = "#f8d7da";
+        return;
+      }
+
+      if (heightUnit === "cm") {
+        height = height / 100;
+      } else if (heightUnit === "ft") {
+        height = height * 0.3048;
+      }
+
+      if (weightUnit === "lb") {
+        weight = weight * 0.453592;
+      }
+
+      const bmi = weight / (height * height);
+      const bmiScore = bmi.toFixed(1);
+
+      let category = "";
+      let color = "";
+
+      if (bmiScore < 18.5) {
+        category = "Thiếu cân (Gầy)";
+        color = "#007bff";
+      } else if (bmiScore >= 18.5 && bmiScore <= 24.9) {
+        category = "Bình thường";
+        color = "#28a745";
+      } else if (bmiScore >= 25 && bmiScore <= 29.9) {
+        category = "Thừa cân";
+        color = "#ffc107";
+      } else if (bmiScore >= 30 && bmiScore <= 34.9) {
+        category = "Béo phì độ I";
+        color = "#fd7e14";
+      } else {
+        category = "Béo phì độ II";
+        color = "#dc3545";
+      }
+
+      resultAreaBmi.innerHTML = `
+    <p>Chỉ số BMI của bạn là:</p>
+    <p class="bmi-score" style="color: ${color};">${bmiScore}</p>
+    <p>Tình trạng cơ thể: <strong style="color: ${color};">${category}</strong></p>
+`;
+      resultAreaBmi.style.backgroundColor = `${color}20`;
+    });
+  }
+  const calculateBtnIw = document.getElementById("calculate-btn-iw");
+  const resultAreaIw = document.getElementById("result-area-iw");
+
+  // Khởi tạo toggle cho các nút trong công cụ Cân nặng lý tưởng
+  setupToggleBmi("gender-group-iw");
+  setupToggleBmi("height-unit-group-iw");
+
+  if (calculateBtnIw) {
+    calculateBtnIw.addEventListener("click", () => {
+      let height = parseFloat(document.getElementById("height-iw").value);
+      const gender = document.querySelector("#gender-group-iw .active").dataset
+        .value;
+      const heightUnit = document.querySelector("#height-unit-group-iw .active")
+        .dataset.unit;
+
+      if (isNaN(height) || height <= 0) {
+        resultAreaIw.innerHTML = `<p style="color: #dc3545;">Vui lòng nhập chiều cao hợp lệ.</p>`;
+        resultAreaIw.style.backgroundColor = "#f8d7da";
+        return;
+      }
+
+      // Chuyển chiều cao sang cm nếu cần
+      if (heightUnit === "ft") {
+        // Giả sử người dùng nhập feet, chuyển sang cm (1 ft = 30.48 cm)
+        height = height * 30.48;
+      }
+
+      // Công thức Robinson tính cân nặng lý tưởng
+      let idealWeight;
+      const heightInInches = height / 2.54;
+
+      if (gender === "male") {
+        // Nam: 52 kg + 1.9 kg cho mỗi inch trên 5 feet
+        idealWeight = 52 + 1.9 * (heightInInches - 60);
+      } else {
+        // Nữ: 49 kg + 1.7 kg cho mỗi inch trên 5 feet
+        idealWeight = 49 + 1.7 * (heightInInches - 60);
+      }
+
+      if (idealWeight < 0) {
+        resultAreaIw.innerHTML = `<p style="color: #dc3545;">Chiều cao không hợp lệ để tính toán.</p>`;
+        resultAreaIw.style.backgroundColor = "#f8d7da";
+        return;
+      }
+
+      const resultWeight = idealWeight.toFixed(1);
+
+      resultAreaIw.innerHTML = `
+            <p>Gợi ý cân nặng lý tưởng của bạn là:</p>
+            <p class="bmi-score" style="color: var(--primary-color);">${resultWeight} kg</p>
+        `;
+      resultAreaIw.style.backgroundColor = `var(--background-color)`;
+    });
+  }
   // --- Tool visibility logic ---
   const allTools = document.querySelectorAll(".tool");
 
@@ -39,30 +180,6 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("hashchange", handleHashChange);
 
   // --- Original calculation functions and event listeners ---
-
-  function calculateBMI(weight, height) {
-    if (weight < 30 || weight > 300 || height < 100 || height > 250)
-      return null;
-    const heightInMeters = height / 100;
-    const bmi = weight / (heightInMeters * heightInMeters);
-    let category;
-    if (bmi < 18.5) category = "Thiếu cân";
-    else if (bmi < 25) category = "Bình thường";
-    else if (bmi < 30) category = "Thừa cân";
-    else category = "Béo phì";
-    return { bmi: bmi.toFixed(1), category };
-  }
-
-  function calculateIdealWeight(height, gender) {
-    if (height < 100 || height > 250) return null;
-    let ideal;
-    if (gender === "male") {
-      ideal = 50 + 0.91 * (height - 152);
-    } else {
-      ideal = 45.5 + 0.91 * (height - 152);
-    }
-    return ideal.toFixed(1);
-  }
 
   function calculateBMR(age, gender, weight, height) {
     if (
@@ -112,20 +229,6 @@ document.addEventListener("DOMContentLoaded", function () {
       bmiResult.innerHTML = result
         ? `<p>BMI của bạn là: ${result.bmi}</p><p>Phân loại: ${result.category}</p>`
         : "<p>Cân nặng (30-300 kg) hoặc chiều cao (100-250 cm) không hợp lệ.</p>";
-    });
-  }
-
-  const iwForm = document.querySelector("#ideal-weight form");
-  const iwResult = document.querySelector("#ideal-weight .result");
-  if (iwForm) {
-    iwForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const height = parseFloat(document.querySelector("#height-iw").value);
-      const gender = document.querySelector("#gender-iw").value;
-      const result = calculateIdealWeight(height, gender);
-      iwResult.innerHTML = result
-        ? `<p>Cân nặng lý tưởng: ${result} kg</p>`
-        : "<p>Chiều cao (100-250 cm) không hợp lệ.</p>";
     });
   }
 

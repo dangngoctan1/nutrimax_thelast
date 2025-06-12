@@ -33,35 +33,120 @@
 
       <!-- BMI Calculator -->
       <div class="tool" id="bmi">
-        <h2>Tính chỉ số BMI</h2>
-        <form>
-          <label for="weight">Cân nặng (kg):</label>
-          <input type="number" id="weight" required />
-          <label for="height">Chiều cao (cm):</label>
-          <input type="number" id="height" required />
-          <button type="submit">Tính BMI</button>
-        </form>
-        <div class="result">
-          <p>BMI của bạn là: <span id="bmi-value"></span></p>
-          <p>Phân loại: <span id="bmi-category"></span></p>
+        <div class="bmi-calculator-container">
+          <div class="calculator-header">
+            <h1>BMI Calculator</h1>
+            <p>
+              Tính chỉ số BMI (Body Mass Index) của bạn để biết tình trạng cơ
+              thể hiện tại.
+            </p>
+          </div>
+
+          <div class="input-grid">
+            <div class="input-card">
+              <span class="card-number">1</span>
+              <label>Giới tính của bạn?</label>
+              <div class="button-group" id="gender-group">
+                <button class="btn-toggle active" data-value="male">Nam</button>
+                <button class="btn-toggle" data-value="female">Nữ</button>
+              </div>
+            </div>
+
+            <div class="input-card">
+              <span class="card-number">2</span>
+              <label>Bạn bao nhiêu tuổi?</label>
+              <div class="input-wrapper">
+                <input type="number" id="age-bmi" value="25" min="1" />
+                <span>Tuổi</span>
+              </div>
+            </div>
+
+            <div class="input-card">
+              <span class="card-number">3</span>
+              <label>Chiều cao của bạn?</label>
+              <div class="input-wrapper">
+                <input type="number" id="height-bmi" value="170" min="1" />
+                <div class="unit-toggle" id="height-unit-group">
+                  <button class="btn-unit active" data-unit="cm">cm</button>
+                  <button class="btn-unit" data-unit="ft">ft/in</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="input-card">
+              <span class="card-number">4</span>
+              <label>Cân nặng của bạn?</label>
+              <div class="input-wrapper">
+                <input type="number" id="weight-bmi" value="60" min="1" />
+                <div class="unit-toggle" id="weight-unit-group">
+                  <button class="btn-unit active" data-unit="kg">kg</button>
+                  <button class="btn-unit" data-unit="lb">lb</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-calculate" id="calculate-btn-bmi">
+            Calculate your BMI
+          </button>
+
+          <div class="result-area" id="result-area-bmi"></div>
         </div>
       </div>
 
       <!-- Ideal Weight Calculator -->
       <div class="tool" id="ideal-weight">
-        <h2>Tính cân nặng lý tưởng</h2>
-        <form>
-          <label for="height-iw">Chiều cao (cm):</label>
-          <input type="number" id="height-iw" required />
-          <label for="gender-iw">Giới tính:</label>
-          <select id="gender-iw">
-            <option value="male">Nam</option>
-            <option value="female">Nữ</option>
-          </select>
-          <button type="submit">Tính</button>
-        </form>
-        <div class="result">
-          <p>Cân nặng lý tưởng: <span id="ideal-weight-value"></span> kg</p>
+        <div class="iw-calculator-container">
+          <div class="calculator-header">
+            <h1>Tính Cân nặng Lý tưởng</h1>
+            <p>
+              Nhập thông tin cơ bản để xem gợi ý cân nặng lý tưởng và sử dụng nó
+              cho mục tiêu sức khỏe của bạn!
+            </p>
+          </div>
+
+          <div class="input-grid-iw">
+            <div class="input-card">
+              <span class="card-number">1</span>
+              <label>Giới tính của bạn?</label>
+              <div class="button-group" id="gender-group-iw">
+                <button class="btn-toggle active" data-value="male">
+                  🧑‍🦰 Nam
+                </button>
+                <button class="btn-toggle" data-value="female">👩 Nữ</button>
+              </div>
+            </div>
+
+            <div class="input-card">
+              <span class="card-number">2</span>
+              <label>Bạn bao nhiêu tuổi?</label>
+              <div class="input-wrapper">
+                <input type="number" id="age-iw" value="25" min="1" />
+                <span>Tuổi</span>
+              </div>
+              <p class="card-subtitle">
+                Tuổi ít ảnh hưởng đến công thức tính cơ bản.
+              </p>
+            </div>
+
+            <div class="input-card">
+              <span class="card-number">3</span>
+              <label>Chiều cao của bạn?</label>
+              <div class="input-wrapper">
+                <input type="number" id="height-iw" value="170" min="1" />
+                <div class="unit-toggle" id="height-unit-group-iw">
+                  <button class="btn-unit active" data-unit="cm">cm</button>
+                  <button class="btn-unit" data-unit="ft">ft/in</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-calculate" id="calculate-btn-iw">
+            Tính cân nặng lý tưởng
+          </button>
+
+          <div class="result-area" id="result-area-iw"></div>
         </div>
       </div>
 

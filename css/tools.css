@@ -1,391 +1,272 @@
-/* Tools Page Styles */
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap");
 
-/* Main tools section */
+/* BIẾN MÀU VÀ FONT */
+:root {
+  --primary-color: #28a745;
+  --background-color: #eef7f0;
+  --card-background: #ffffff;
+  --text-color: #555;
+  --title-color: #333;
+  --inactive-bg: #f0f0f0;
+  --inactive-text: #888;
+  --border-color: #e9e9e9;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+}
+
+/* GHI ĐÈ STYLE CHUNG CHO TRANG TOOLS */
 .tools {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #f8fffe 0%, #e8f5f3 100%);
-    min-height: 100vh;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: none; /* Bỏ nền cũ của trang tools */
 }
 
-.tools h1 {
-    text-align: center;
-    color: #2d5a27;
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    text-shadow: 0 2px 4px rgba(45, 90, 39, 0.1);
-}
-
+.tools > h1,
 .tools > p {
-    text-align: center;
-    color: #4a7c59;
-    font-size: 1.1rem;
-    margin-bottom: 50px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
+  display: none; /* Ẩn tiêu đề chung của trang tools */
 }
 
-/* Tool Container Styles */
 .tool {
-    background: white;
-    margin-bottom: 30px;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(45, 90, 39, 0.1);
-    border: 1px solid #e0f2e7;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+  background-color: var(--background-color);
+  font-family: "Be Vietnam Pro", sans-serif;
+  padding: 20px;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px var(--shadow-color);
 }
 
-.tool::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, #4a7c59, #2d5a27, #4a7c59);
-    background-size: 200% 100%;
-    animation: gradientMove 3s ease infinite;
+/* STYLE CHO BMI CALCULATOR MỚI */
+.bmi-calculator-container {
+  background-color: var(--card-background);
+  padding: clamp(20px, 5vw, 40px);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
 }
 
-@keyframes gradientMove {
-    0%, 100% { background-position: 0% 0%; }
-    50% { background-position: 100% 0%; }
+.calculator-header {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.tool:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(45, 90, 39, 0.15);
+.calculator-header h1 {
+  color: var(--title-color);
+  font-size: 2rem;
+  margin-bottom: 8px;
 }
 
-.tool h2 {
-    color: #2d5a27;
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 25px;
-    text-align: center;
-    position: relative;
-    padding-bottom: 15px;
+.calculator-header p {
+  font-size: 1rem;
+  max-width: 400px;
+  margin: 0 auto;
+  line-height: 1.5;
+  color: var(--text-color);
 }
 
-.tool h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, #4a7c59, #2d5a27);
-    border-radius: 2px;
+.input-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
-/* Form Styles */
-.tool form {
-    display: grid;
-    gap: 20px;
-    max-width: 500px;
-    margin: 0 auto 30px auto;
+.input-card {
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
 }
 
-.tool label {
-    color: #2d5a27;
-    font-weight: 600;
-    font-size: 1rem;
-    margin-bottom: 5px;
-    display: block;
+.card-number {
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background-color: var(--primary-color);
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
-.tool input,
-.tool select {
-    width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #e0f2e7;
-    border-radius: 8px;
-    font-size: 1rem;
-    background: white;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
+.input-card label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: var(--title-color);
 }
 
-.tool input:focus,
-.tool select:focus {
-    outline: none;
-    border-color: #4a7c59;
-    box-shadow: 0 0 0 3px rgba(74, 124, 89, 0.1);
-    transform: translateY(-2px);
+.button-group,
+.unit-toggle {
+  display: flex;
+  gap: 10px;
 }
 
-.tool input:hover,
-.tool select:hover {
-    border-color: #4a7c59;
+.btn-toggle,
+.btn-unit {
+  flex-grow: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  background-color: var(--inactive-bg);
+  color: var(--inactive-text);
 }
 
-.tool select {
-    cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a7c59' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 20px;
-    padding-right: 40px;
+.btn-toggle.active,
+.btn-unit.active {
+  background-color: var(--primary-color);
+  color: white;
 }
 
-.tool button[type="submit"] {
-    background: linear-gradient(135deg, #4a7c59 0%, #2d5a27 100%);
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    position: relative;
-    overflow: hidden;
-    margin-top: 10px;
+.input-wrapper {
+  display: flex;
+  align-items: baseline;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 5px;
 }
 
-.tool button[type="submit"]::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
+.input-wrapper input {
+  border: none;
+  outline: none;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--title-color);
+  width: 100%;
+  background: transparent;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
-.tool button[type="submit"]:hover::before {
-    left: 100%;
+.input-wrapper span {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-left: 10px;
 }
 
-.tool button[type="submit"]:hover {
-    background: linear-gradient(135deg, #5a8c69 0%, #3d6a37 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(45, 90, 39, 0.3);
+.btn-calculate {
+  width: 100%;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-.tool button[type="submit"]:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 15px rgba(45, 90, 39, 0.3);
+.btn-calculate:hover {
+  background-color: #218838;
 }
 
-/* Result Styles */
-.result {
-    background: linear-gradient(135deg, #f8fffe 0%, #e8f5f3 100%);
-    padding: 25px;
-    border-radius: 10px;
-    text-align: center;
-    border: 1px solid #e0f2e7;
-    margin-top: 20px;
-    position: relative;
-    overflow: hidden;
+.result-area {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  transition: background-color 0.5s;
+}
+.result-area p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+.result-area .bmi-score {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
-.result::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #4a7c59, #2d5a27, #4a7c59);
+/* CSS cho các công cụ còn lại (để không bị mất style) */
+.tool:not(#bmi) {
+  background: white;
+  margin-bottom: 30px;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(45, 90, 39, 0.1);
+  border: 1px solid #e0f2e7;
+}
+.tool:not(#bmi) h2 {
+  color: #2d5a27;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  text-align: center;
+}
+.tool:not(#bmi) form {
+  display: grid;
+  gap: 20px;
+  max-width: 500px;
+  margin: 0 auto 30px auto;
+}
+.tool:not(#bmi) label {
+  color: #2d5a27;
+  font-weight: 600;
+}
+.tool:not(#bmi) input,
+.tool:not(#bmi) select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e0f2e7;
+  border-radius: 8px;
+}
+.tool:not(#bmi) button {
+  background: #2d5a27;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.tool:not(#bmi) .result {
+  background: #f8fffe;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid #e0f2e7;
+  margin-top: 20px;
 }
 
-.result p {
-    color: #2d5a27;
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin: 10px 0;
-    line-height: 1.6;
+.input-grid-iw {
+  display: grid;
+  /* Chỉnh lại grid thành 3 cột */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
-.result span {
-    font-weight: 700;
-    color: #2d5a27;
-    font-size: 1.2rem;
-    text-shadow: 0 1px 2px rgba(45, 90, 39, 0.1);
+.iw-calculator-container .btn-toggle {
+  font-size: 1.1rem; /* Chỉnh lại font cho nút Nam/Nữ */
 }
 
-/* Individual Tool Specific Styles */
-#bmi .result span {
-    color: #e74c3c;
+.card-subtitle {
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 15px;
+  text-align: center;
 }
 
-#ideal-weight .result span {
-    color: #3498db;
-}
-
-#bmr-tdee .result span {
-    color: #f39c12;
-}
-
-#water-intake .result span {
-    color: #3498db;
-}
-
-/* Tool Grid Layout for larger screens */
-@media (min-width: 1024px) {
-    .tools {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-    
-    .tools h1,
-    .tools > p {
-        grid-column: 1;
-    }
-    
-    .tool {
-        grid-column: 1;
-        max-width: 800px;
-        margin: 15px auto;
-    }
-}
-
-/* Animation for result appearance */
-.result {
-    animation: slideInUp 0.5s ease;
-}
-
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Accessibility Improvements */
-.tool input:focus,
-.tool select:focus,
-.tool button:focus {
-    outline: 3px solid #4a7c59;
-    outline-offset: 2px;
-}
-
-/* Loading State */
-.tool.loading button[type="submit"] {
-    background: #95a5a6;
-    cursor: not-allowed;
-    pointer-events: none;
-}
-
-.tool.loading button[type="submit"]::after {
-    content: '';
-    width: 16px;
-    height: 16px;
-    margin-left: 10px;
-    border: 2px solid #ffffff;
-    border-top: 2px solid transparent;
-    border-radius: 50%;
-    display: inline-block;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Error State */
-.result.error {
-    background: linear-gradient(135deg, #fee 0%, #fdd 100%);
-    border-color: #f8d7da;
-    color: #721c24;
-}
-
-.result.error::before {
-    background: #dc3545;
-}
-
-/* Success State */
-.result.success {
-    background: linear-gradient(135deg, #f8fffe 0%, #e8f5f3 100%);
-    border-color: #e0f2e7;
-}
-
-.result.success::before {
-    background: linear-gradient(90deg, #4a7c59, #2d5a27, #4a7c59);
-}
-
-/* Print Styles */
-@media print {
-    .tool {
-        break-inside: avoid;
-        page-break-inside: avoid;
-    }
-    
-    .tool button {
-        display: none;
-    }
-    
-    .result {
-        border: 2px solid #2d5a27;
-    }
-}
-
-/* Footer Section Styles */
-.footer-section.tools {
-    background: transparent !important;
-    background-color: transparent !important;
-    color: #fff !important;
-    padding: 0 20px;
-    border-top: none;
-    font-family: inherit !important;
-    font-size: 14px !important;
-    margin: 0 !important;
-    line-height: 1.6 !important;
-    box-shadow: none !important;
-    display: block;
-}
-
-.footer-section.tools h4 {
-    color: #aee571 !important;
-    font-size: 20px !important;
-    font-weight: 700 !important;
-    margin-bottom: 24px !important;
-    margin-top: 0 !important;
-}
-
-.footer-section.tools ul {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0 0 0;
-}
-
-.footer-section.tools ul li {
-    margin-bottom: 12px;
-}
-
-.footer-section.tools ul li a {
-    color: #fff !important;
-    font-weight: 600;
-    text-shadow: none;
-    background: none;
-    transition: color 0.3s;
-    font-family: inherit !important;
-    font-size: 14px !important;
-    padding: 4px 0;
-    display: inline-block;
-    line-height: 1.6;
-}
-
-.footer-section.tools ul li a:hover {
-    color: #aee571 !important;
-    text-decoration: underline;
+/* Đảm bảo các tool khác không bị ảnh hưởng */
+#ideal-weight {
+  background-color: var(--background-color);
+  font-family: "Be Vietnam Pro", sans-serif;
+  padding: 20px;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px var(--shadow-color);
 }
