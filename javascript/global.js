@@ -183,9 +183,8 @@ const foods = [
 window.foods = foods;
 
 document.addEventListener("DOMContentLoaded", () => {
+  // ===== LOGIC CHUNG CÓ SẴN =====
   const header = document.querySelector("header");
-
-  // Header scroll effect logic
   if (header) {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 50) {
@@ -195,34 +194,23 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
-  // --- Dropdown Menu Logic ---
   const dropdown = document.querySelector(".dropdown");
-
   if (dropdown) {
     const dropbtn = dropdown.querySelector(".dropbtn");
     const dropdownContent = dropdown.querySelector(".dropdown-content");
-
     dropbtn.addEventListener("click", function (event) {
-      // If on tools.html, prevent the link from reloading the page
       if (window.location.pathname.includes("/tools.html")) {
         event.preventDefault();
       }
-      // Stop the click from bubbling up to the window listener
       event.stopPropagation();
-      // Toggle the .show class to display/hide the dropdown
       dropdownContent.classList.toggle("show");
     });
-
-    // Close dropdown when a link inside it is clicked
     dropdownContent.addEventListener("click", function (event) {
       if (event.target.tagName === "A") {
         dropdownContent.classList.remove("show");
       }
     });
   }
-
-  // Close the dropdown if the user clicks anywhere outside of it
   window.addEventListener("click", function (event) {
     const dropdownContent = document.querySelector(".dropdown-content");
     if (dropdownContent && dropdownContent.classList.contains("show")) {
@@ -231,4 +219,111 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
+
+  // ===== LOGIC CHO GIAO DIỆN SÁNG/TỐI VÀ CỠ CHỮ (ĐÃ CẬP NHẬT) =====
+
+  // --- Biến và Phần tử ---
+  const themeToggleButton = document.getElementById("theme-toggle");
+  const fontSizeToggleButton = document.getElementById("font-size-toggle");
+  const moonIcon = "🌙";
+  const sunIcon = "☀️";
+  const rootElement = document.documentElement; // Thẻ <html>
+
+  // --- Logic cho Giao diện (Theme) ---
+  const applyTheme = () => {
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme === "dark") {
+      document.body.classList.add("dark-mode");
+      if (themeToggleButton) themeToggleButton.innerHTML = moonIcon;
+    } else {
+      document.body.classList.remove("dark-mode");
+      if (themeToggleButton) themeToggleButton.innerHTML = sunIcon;
+    }
+  };
+
+  if (themeToggleButton) {
+    themeToggleButton.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+        themeToggleButton.innerHTML = moonIcon;
+      } else {
+        localStorage.setItem("theme", "light");
+        themeToggleButton.innerHTML = sunIcon;
+      }
+    });
+  }
+
+  // --- Logic cho Cỡ chữ (Font Size) - ĐÃ NÂNG CẤP LÊN 4 CẤP ĐỘ ---
+  const fontSizes = ["m", "l", "xl", "s"]; // Chu trình: Vừa -> Lớn -> Rất Lớn -> Nhỏ
+
+  const applyFontSize = () => {
+    const savedSize = localStorage.getItem("fontSize") || "m"; // Mặc định là 'm'
+    rootElement.setAttribute("data-font-size", savedSize);
+  };
+
+  if (fontSizeToggleButton) {
+    fontSizeToggleButton.addEventListener("click", () => {
+      // Lấy cỡ chữ hiện tại từ thuộc tính data, nếu không có thì mặc định là 'm'
+      const currentSize = rootElement.getAttribute("data-font-size") || "m";
+
+      // Tìm vị trí của cỡ hiện tại trong chu trình
+      const currentIndex = fontSizes.indexOf(currentSize);
+
+      // Lấy vị trí của cỡ tiếp theo, quay vòng lại từ đầu nếu hết
+      const nextIndex = (currentIndex + 1) % fontSizes.length;
+
+      // Lấy cỡ chữ mới
+      const newSize = fontSizes[nextIndex];
+
+      // Cập nhật giao diện và lưu vào localStorage
+      rootElement.setAttribute("data-font-size", newSize);
+      localStorage.setItem("fontSize", newSize);
+    });
+  }
+
+  // --- Áp dụng cả hai cài đặt khi tải trang ---
+  applyTheme();
+  applyFontSize();
+  const cursorDot = document.getElementById("cursor-dot");
+  const cursorRing = document.getElementById("cursor-ring");
+
+  if (cursorDot && cursorRing) {
+    // Vị trí của con trỏ chuột
+    let mouseX = 0;
+    let mouseY = 0;
+
+    // Vị trí của vòng sáng (sẽ đi theo con trỏ)
+    let ringX = 0;
+    let ringY = 0;
+
+    // Tốc độ di chuyển của vòng sáng (số càng nhỏ, càng trễ)
+    const speed = 0.15;
+
+    // Hàm cập nhật vị trí con trỏ
+    document.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    // Hàm tạo animation
+    const animateCursor = () => {
+      // Cập nhật vị trí của chấm tròn (theo chuột ngay lập tức)
+      cursorDot.style.left = `${mouseX}px`;
+      cursorDot.style.top = `${mouseY}px`;
+
+      // Tính toán và cập nhật vị trí của vòng sáng một cách mượt mà
+      ringX += (mouseX - ringX) * speed;
+      ringY += (mouseY - ringY) * speed;
+
+      cursorRing.style.left = `${ringX}px`;
+      cursorRing.style.top = `${ringY}px`;
+
+      // Lặp lại animation ở khung hình tiếp theo
+      requestAnimationFrame(animateCursor);
+    };
+
+    // Bắt đầu animation
+    animateCursor();
+  }
 });

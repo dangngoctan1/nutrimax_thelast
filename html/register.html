@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NutriMax - Đăng Ký</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
+    <link rel="stylesheet" href="../css/auth.css" />
     <script src="../javascript/global.js" defer></script>
     <script src="../javascript/auth.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <section class="register">
-        <h2>Tạo tài khoản NutriMax</h2>
-        <form>
-            <label for="fullname">Họ và tên:</label>
-            <input type="text" id="fullname" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" required>
-            <label for="password">Mật khẩu:</label>
-            <input type="password" id="password" required>
-            <label for="confirm-password">Xác nhận mật khẩu:</label>
-            <input type="password" id="confirm-password" required>
-            <div class="terms">
-                <input type="checkbox" id="terms" required>
-                <label for="terms">Đồng ý với điều khoản sử dụng</label>
-            </div>
-            <button type="submit">Đăng ký</button>
-        </form>
-        <div class="links">
-            <a href="login.html">Đã có tài khoản? Đăng nhập</a>
+      <h2>Tạo tài khoản NutriMax</h2>
+      <form>
+        <label for="fullname">Họ và tên:</label>
+        <input type="text" id="fullname" required />
+        <label for="email">Email:</label>
+        <input type="email" id="email" required />
+        <label for="password">Mật khẩu:</label>
+        <input type="password" id="password" required />
+        <label for="confirm-password">Xác nhận mật khẩu:</label>
+        <input type="password" id="confirm-password" required />
+        <div class="terms">
+          <input type="checkbox" id="terms" required />
+          <label for="terms">Đồng ý với điều khoản sử dụng</label>
         </div>
+        <button type="submit">Đăng ký</button>
+      </form>
+      <div class="links">
+        <a href="login.html">Đã có tài khoản? Đăng nhập</a>
+      </div>
     </section>
-</body>
+    <div class="theme-switcher">
+      <button id="font-size-toggle" title="Thay đổi cỡ chữ">Tᴛ</button>
+      <button id="theme-toggle" title="Chuyển đổi giao diện">☀️</button>
+    </div>
+    <div id="cursor-ring"></div>
+    <div id="cursor-dot"></div>
+  </body>
 </html>

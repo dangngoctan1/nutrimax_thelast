@@ -23,13 +23,50 @@ body {
   --orange: #ff9800;
   --blue: #2196f3;
   --dark-blue: #1976d2;
-  --white: #ffffff;
-  --light-gray: #f5f5f5;
-  --medium-gray: #9e9e9e;
-  --dark-gray: #424242;
-  --black: #212121;
+
+  /* Màu sắc cho giao diện */
+  --white: #ffffff; /* Sẽ là màu nền chính */
+  --light-gray: #f5f5f5; /* Sẽ là màu nền phụ */
+  --medium-gray: #9e9e9e; /* Sẽ là màu chữ phụ */
+  --dark-gray: #424242; /* Sẽ là màu chữ chính */
+  --black: #212121; /* Sẽ là màu tiêu đề */
 }
 
+body.dark-mode {
+  --primary-green: #4caf50; /* Giữ nguyên hoặc thay đổi tùy ý */
+  --light-green: #81c784;
+  --dark-green: #2e7d32;
+
+  /* Đảo ngược màu nền và màu chữ */
+  --white: #212529; /* Nền chính (màu tối) */
+  --light-gray: #343a40; /* Nền phụ (màu tối hơn) */
+  --medium-gray: #adb5bd; /* Chữ phụ (màu sáng) */
+  --dark-gray: #e9ecef; /* Chữ chính (màu sáng) */
+  --black: #ffffff; /* Tiêu đề (màu trắng) */
+}
+
+body,
+header,
+.food-card,
+.meal-panel,
+.tool,
+footer {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  /* Sử dụng biến màu */
+  background-color: var(--white);
+  color: var(--dark-gray);
+  line-height: 1.6;
+  cursor: default;
+}
+
+p {
+  color: var(--dark-gray);
+}
 /* Typography chung */
 h1,
 h2,
@@ -38,12 +75,12 @@ h4,
 h5,
 h6 {
   color: var(--black);
-  font-weight: bold;
 }
 
-p {
-  font-size: 16px;
+body.dark-mode #theme-toggle {
+  background-color: var(--light-gray);
   color: var(--dark-gray);
+  border-color: var(--medium-gray);
 }
 
 a {
@@ -515,4 +552,142 @@ header.scrolled nav ul li a.btn.primary {
 header.scrolled nav ul li a.btn.primary:hover {
   background: linear-gradient(135deg, #f57c00, var(--orange));
   transform: translateY(0); /* Disable the lift effect on scrolled header */
+}
+
+.theme-switcher {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1001;
+  display: flex; /* Dùng Flexbox */
+  flex-direction: column-reverse; /* Xếp chồng theo chiều dọc, đảo ngược */
+  gap: 15px; /* Khoảng cách giữa 2 nút */
+}
+
+/* Áp dụng kiểu chung cho cả 2 nút */
+.theme-switcher button {
+  background-color: var(--white);
+  color: var(--dark-gray);
+  border: 1px solid var(--light-gray);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+  font-weight: bold;
+}
+
+.theme-switcher button:hover {
+  transform: scale(1.1);
+}
+
+/* Sửa nút bấm trong chế độ tối (áp dụng cho cả 2 nút) */
+body.dark-mode .theme-switcher button {
+  background-color: var(--light-gray);
+  color: var(--dark-gray);
+  border-color: var(--medium-gray);
+}
+
+/* Kích thước chữ gốc (Cỡ Vừa - Medium) */
+html {
+  font-size: 16px; /* Cỡ Vừa (Normal) là mặc định */
+  transition: font-size 0.3s ease;
+}
+
+/* Các cấp độ khác nhau được định nghĩa bằng thuộc tính data-font-size */
+
+/* Cỡ Nhỏ (Small) */
+html[data-font-size="s"] {
+  font-size: 14px;
+}
+
+/* Cỡ Lớn (Large) */
+html[data-font-size="l"] {
+  font-size: 18px;
+}
+
+/* Cỡ Rất Lớn (Extra Large) */
+html[data-font-size="xl"] {
+  font-size: 20px;
+}
+
+/* Ẩn con trỏ chuột mặc định của trình duyệt */
+body {
+  cursor: none !important;
+}
+
+/* Định dạng cho vầng sáng mờ bên ngoài */
+#cursor-ring {
+  position: fixed;
+  width: 50px; /* Tăng kích thước tổng thể của vầng sáng */
+  height: 50px;
+
+  /* Xóa viền và thay bằng nền màu tỏa tròn (radial-gradient) */
+  /* Vầng sáng sẽ đậm ở tâm và mờ dần ra ngoài cạnh */
+  background: radial-gradient(
+    circle,
+    rgba(102, 187, 106, 0.4) 0%,
+    rgba(102, 187, 106, 0) 70%
+  );
+
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: none; /* Rất quan trọng: để chuột có thể click xuyên qua */
+  z-index: 9999;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    width 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    height 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Định dạng cho chấm tròn ở giữa (không đổi) */
+#cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: #90ff9d;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Hiệu ứng khi di chuột qua các phần tử có thể nhấp */
+a:hover ~ #cursor-ring,
+button:hover ~ #cursor-ring,
+.suggestions span:hover ~ #cursor-ring,
+.tab:hover ~ #cursor-ring {
+  width: 60px; /* Vầng sáng to ra */
+  height: 60px;
+  background: radial-gradient(
+    circle,
+    rgba(76, 175, 80, 0.5) 0%,
+    rgba(76, 175, 80, 0) 70%
+  ); /* Vầng sáng trở nên đậm hơn */
+}
+
+/* Trong chế độ tối, đổi màu chấm tròn và vầng sáng */
+body.dark-mode #cursor-dot {
+  background-color: #e9ecef;
+}
+body.dark-mode #cursor-ring {
+  background: radial-gradient(
+    circle,
+    rgba(139, 195, 74, 0.4) 0%,
+    rgba(139, 195, 74, 0) 70%
+  );
+}
+body.dark-mode a:hover ~ #cursor-ring,
+body.dark-mode button:hover ~ #cursor-ring,
+body.dark-mode .suggestions span:hover ~ #cursor-ring,
+body.dark-mode .tab:hover ~ #cursor-ring {
+  background: radial-gradient(
+    circle,
+    rgba(139, 195, 74, 0.6) 0%,
+    rgba(139, 195, 74, 0) 70%
+  );
 }
