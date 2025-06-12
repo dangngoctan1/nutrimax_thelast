@@ -11,7 +11,6 @@
     <script src="../javascript/index.js" defer></script>
   </head>
   <body>
-    <!-- Header -->
     <header>
       <div class="logo">NutriMax</div>
       <nav>
@@ -24,7 +23,6 @@
       </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
       <div class="hero-content">
         <h1>Khám phá thế giới dinh dưỡng cùng NutriMax</h1>
@@ -40,7 +38,6 @@
       </div>
     </section>
 
-    <!-- Search Section -->
     <section id="search" class="search-section">
       <h2>Tìm kiếm thực phẩm</h2>
       <form>
@@ -60,9 +57,12 @@
         <span>Trứng gà</span>
         <span>Chuối</span>
       </div>
+
+      <div id="search-results" class="search-results-container">
+        <div id="search-results-grid" class="food-grid"></div>
+      </div>
     </section>
 
-    <!-- Carousel Section -->
     <section class="carousel">
       <div class="carousel-container">
         <img src="../images/carousel/pic1CS.jpg" alt="Cân bằng dinh dưỡng" />
@@ -81,7 +81,6 @@
       </div>
     </section>
 
-    <!-- Filter Tabs -->
     <section class="filter-tabs">
       <div
         class="tab"
@@ -145,22 +144,14 @@
       </div>
     </section>
 
-    <!-- Main Container với Food Grid và Meal Panel -->
     <div class="main-container">
-      <!-- Content Area -->
       <div class="content-area">
-        <!-- Food Grid -->
-        <section class="food-grid">
-          <!-- Các card thực phẩm sẽ được chèn động qua JavaScript -->
-        </section>
+        <section id="main-food-grid" class="food-grid"></section>
       </div>
 
-      <!-- Current Meal Panel - Sidebar -->
       <aside class="meal-panel">
         <h3>Thực đơn hiện tại</h3>
-        <div class="meal-items">
-          <!-- Các món ăn sẽ được chèn động qua JavaScript -->
-        </div>
+        <div class="meal-items"></div>
         <div class="meal-summary">
           <p>Tổng calo: <span>0</span> calo</p>
           <p>Tổng protein: <span>0</span> g</p>
@@ -171,7 +162,6 @@
       </aside>
     </div>
 
-    <!-- Footer -->
     <footer>
       <div class="footer-content">
         <div class="footer-section about">

@@ -1,4 +1,4 @@
-/* ===== INDEX.CSS - TRANG CHỦ NUTRIMAX ===== */
+/* ===== INDEX.CSS - TRANG CHỦ NUTRIMAX (PHIÊN BẢN HOÀN CHỈNH) ===== */
 
 /* Hero Section */
 .hero {
@@ -161,6 +161,7 @@
   gap: 12px;
   max-width: 700px;
   margin: 0 auto;
+  margin-bottom: 30px;
 }
 
 .suggestions span {
@@ -241,25 +242,24 @@
 }
 
 /* Filter Tabs */
-/* Filter Tabs - Updated Styles */
 .filter-tabs {
-  display: flex; /* */
-  justify-content: center; /* */
-  gap: 24px; /* */
-  padding: 60px 40px; /* */
-  flex-wrap: wrap; /* */
-  max-width: 1200px; /* */
-  margin: 0 auto; /* */
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 60px 40px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .tab {
   width: 260px;
   height: 200px;
-  border-radius: 16px; /* */
-  cursor: pointer; /* */
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* */
-  position: relative; /* */
-  overflow: hidden; /* */
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   background-size: cover;
   background-position: center;
@@ -270,14 +270,14 @@
 }
 
 .tab::before {
-  content: ""; /* */
-  position: absolute; /* */
-  top: 0; /* */
-  left: 0; /* */
-  width: 100%; /* */
-  height: 100%; /* */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 10%, transparent 50%);
-  transition: background 0.4s ease; /* */
+  transition: background 0.4s ease;
 }
 
 .tab-visible {
@@ -298,12 +298,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(
-    30,
-    94,
-    32,
-    0.9
-  ); /* Dark green overlay, similar to the project's theme */
+  background: rgba(30, 94, 32, 0.9);
   opacity: 0;
   transform: scale(1.1);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -327,7 +322,7 @@
 
 .tab-hover-content p {
   font-size: 0.95rem;
-  line-height: 1.6; /* */
+  line-height: 1.6;
   margin-bottom: 20px;
   color: #fff;
 }
@@ -354,21 +349,23 @@
   transform: scale(1.05);
 }
 
+/* ===== START: KHỐI MÃ HOÀN CHỈNH CHO LAYOUT CHÍNH ===== */
+
 /* Main Content Container với Sidebar - Layout chính */
 .main-container {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 30px;
+  align-items: flex-start;
   max-width: 1400px;
   margin: 0 auto;
-  gap: 30px;
   padding: 40px;
   min-height: 800px;
   position: relative;
 }
 
 .content-area {
-  flex: 1;
-  min-width: 0; /* Cho phép flex shrink */
+  min-width: 0; /* Thuộc tính cần thiết cho grid */
 }
 
 /* Food Grid - Lưới hiển thị thực phẩm */
@@ -392,6 +389,7 @@
   border-radius: 12px;
   border: 2px dashed var(--medium-gray);
 }
+/* ===== END: KHỐI MÃ HOÀN CHỈNH CHO LAYOUT CHÍNH ===== */
 
 .food-card {
   background: var(--white);
@@ -868,10 +866,11 @@
   }
 }
 
+/* ===== START: KHỐI MÃ HOÀN CHỈNH CHO RESPONSIVE ===== */
 /* Responsive Design */
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
   .main-container {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     padding: 20px;
   }
 
@@ -928,3 +927,4 @@
     width: 60px;
   }
 }
+/* ===== END: KHỐI MÃ HOÀN CHỈNH CHO RESPONSIVE ===== */
