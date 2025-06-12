@@ -1,165 +1,173 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NutriMax - Công Cụ Tính Toán</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    <link rel="stylesheet" href="../css/tools.css">
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
+    <link rel="stylesheet" href="../css/tools.css" />
     <script src="../javascript/global.js" defer></script>
     <script src="../javascript/tools.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header -->
     <header>
-        <div class="logo">NutriMax</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Trang Chủ</a></li>
-                <li><a href="tools.html">Công Cụ</a></li>
-                <li><a href="nutrition-info.html">Thông Tin Dinh Dưỡng</a></li>
-                <li><a href="login.html">Tài Khoản</a></li>
-            </ul>
-        </nav>
+      <div class="logo">NutriMax</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Trang Chủ</a></li>
+          <li><a href="tools.html">Công Cụ</a></li>
+          <li><a href="nutrition-info.html">Thông Tin Dinh Dưỡng</a></li>
+          <li><a href="login.html" class="btn primary">Tài Khoản</a></li>
+        </ul>
+      </nav>
     </header>
 
     <!-- Tools Section -->
     <section class="tools">
-        <h1>Công Cụ Tính Toán Dinh Dưỡng</h1>
-        <p>Sử dụng các công cụ khoa học để tính toán các chỉ số sức khỏe của bạn</p>
+      <h1>Công Cụ Tính Toán Dinh Dưỡng</h1>
+      <p>
+        Sử dụng các công cụ khoa học để tính toán các chỉ số sức khỏe của bạn
+      </p>
 
-        <!-- BMI Calculator -->
-        <div class="tool" id="bmi">
-            <h2>Tính chỉ số BMI</h2>
-            <form>
-                <label for="weight">Cân nặng (kg):</label>
-                <input type="number" id="weight" required>
-                <label for="height">Chiều cao (cm):</label>
-                <input type="number" id="height" required>
-                <button type="submit">Tính BMI</button>
-            </form>
-            <div class="result">
-                <p>BMI của bạn là: <span id="bmi-value"></span></p>
-                <p>Phân loại: <span id="bmi-category"></span></p>
-            </div>
+      <!-- BMI Calculator -->
+      <div class="tool" id="bmi">
+        <h2>Tính chỉ số BMI</h2>
+        <form>
+          <label for="weight">Cân nặng (kg):</label>
+          <input type="number" id="weight" required />
+          <label for="height">Chiều cao (cm):</label>
+          <input type="number" id="height" required />
+          <button type="submit">Tính BMI</button>
+        </form>
+        <div class="result">
+          <p>BMI của bạn là: <span id="bmi-value"></span></p>
+          <p>Phân loại: <span id="bmi-category"></span></p>
         </div>
+      </div>
 
-        <!-- Ideal Weight Calculator -->
-        <div class="tool" id="ideal-weight">
-            <h2>Tính cân nặng lý tưởng</h2>
-            <form>
-                <label for="height-iw">Chiều cao (cm):</label>
-                <input type="number" id="height-iw" required>
-                <label for="gender-iw">Giới tính:</label>
-                <select id="gender-iw">
-                    <option value="male">Nam</option>
-                    <option value="female">Nữ</option>
-                </select>
-                <button type="submit">Tính</button>
-            </form>
-            <div class="result">
-                <p>Cân nặng lý tưởng: <span id="ideal-weight-value"></span> kg</p>
-            </div>
+      <!-- Ideal Weight Calculator -->
+      <div class="tool" id="ideal-weight">
+        <h2>Tính cân nặng lý tưởng</h2>
+        <form>
+          <label for="height-iw">Chiều cao (cm):</label>
+          <input type="number" id="height-iw" required />
+          <label for="gender-iw">Giới tính:</label>
+          <select id="gender-iw">
+            <option value="male">Nam</option>
+            <option value="female">Nữ</option>
+          </select>
+          <button type="submit">Tính</button>
+        </form>
+        <div class="result">
+          <p>Cân nặng lý tưởng: <span id="ideal-weight-value"></span> kg</p>
         </div>
+      </div>
 
-        <!-- BMR/TDEE Calculator -->
-        <div class="tool" id="bmr-tdee">
-            <h2>Tính BMR/TDEE</h2>
-            <form>
-                <label for="age">Tuổi:</label>
-                <input type="number" id="age" required>
-                <label for="gender">Giới tính:</label>
-                <select id="gender">
-                    <option value="male">Nam</option>
-                    <option value="female">Nữ</option>
-                </select>
-                <label for="weight-bmr">Cân nặng (kg):</label>
-                <input type="number" id="weight-bmr" required>
-                <label for="height-bmr">Chiều cao (cm):</label>
-                <input type="number" id="height-bmr" required>
-                <label for="activity">Mức độ hoạt động:</label>
-                <select id="activity">
-                    <option value="sedentary">Ít vận động</option>
-                    <option value="light">Vận động nhẹ</option>
-                    <option value="moderate">Vận động trung bình</option>
-                    <option value="active">Vận động nhiều</option>
-                    <option value="very-active">Vận động rất nhiều</option>
-                </select>
-                <button type="submit">Tính BMR/TDEE</button>
-            </form>
-            <div class="result">
-                <p>BMR: <span id="bmr-value"></span> calo/ngày</p>
-                <p>TDEE: <span id="tdee-value"></span> calo/ngày</p>
-            </div>
+      <!-- BMR/TDEE Calculator -->
+      <div class="tool" id="bmr-tdee">
+        <h2>Tính BMR/TDEE</h2>
+        <form>
+          <label for="age">Tuổi:</label>
+          <input type="number" id="age" required />
+          <label for="gender">Giới tính:</label>
+          <select id="gender">
+            <option value="male">Nam</option>
+            <option value="female">Nữ</option>
+          </select>
+          <label for="weight-bmr">Cân nặng (kg):</label>
+          <input type="number" id="weight-bmr" required />
+          <label for="height-bmr">Chiều cao (cm):</label>
+          <input type="number" id="height-bmr" required />
+          <label for="activity">Mức độ hoạt động:</label>
+          <select id="activity">
+            <option value="sedentary">Ít vận động</option>
+            <option value="light">Vận động nhẹ</option>
+            <option value="moderate">Vận động trung bình</option>
+            <option value="active">Vận động nhiều</option>
+            <option value="very-active">Vận động rất nhiều</option>
+          </select>
+          <button type="submit">Tính BMR/TDEE</button>
+        </form>
+        <div class="result">
+          <p>BMR: <span id="bmr-value"></span> calo/ngày</p>
+          <p>TDEE: <span id="tdee-value"></span> calo/ngày</p>
         </div>
+      </div>
 
-        <!-- Water Intake Calculator -->
-        <div class="tool" id="water-intake">
-            <h2>Tính lượng nước cần uống</h2>
-            <form>
-                <label for="weight-water">Cân nặng (kg):</label>
-                <input type="number" id="weight-water" required>
-                <label for="activity-water">Mức độ hoạt động:</label>
-                <select id="activity-water">
-                    <option value="low">Thấp</option>
-                    <option value="medium">Trung bình</option>
-                    <option value="high">Cao</option>
-                </select>
-                <button type="submit">Tính</button>
-            </form>
-            <div class="result">
-                <p>Lượng nước cần uống: <span id="water-value"></span> lít/ngày</p>
-            </div>
+      <!-- Water Intake Calculator -->
+      <div class="tool" id="water-intake">
+        <h2>Tính lượng nước cần uống</h2>
+        <form>
+          <label for="weight-water">Cân nặng (kg):</label>
+          <input type="number" id="weight-water" required />
+          <label for="activity-water">Mức độ hoạt động:</label>
+          <select id="activity-water">
+            <option value="low">Thấp</option>
+            <option value="medium">Trung bình</option>
+            <option value="high">Cao</option>
+          </select>
+          <button type="submit">Tính</button>
+        </form>
+        <div class="result">
+          <p>Lượng nước cần uống: <span id="water-value"></span> lít/ngày</p>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-section about">
-                <h4>Về NutriMax</h4>
-                <p>Đồng hành cùng bạn trên hành trình dinh dưỡng lành mạnh</p>
-                <p>Địa chỉ: 123 Đường ABC, Quận XYZ, TP. HCM</p>
-                <p>Email: info@nutrimax.com</p>
-                <p>Hotline: 0123 456 789</p>
-            </div>
-            <div class="footer-section links">
-                <h4>Liên kết nhanh</h4>
-                <ul>
-                    <li><a href="index.html">Trang chủ</a></li>
-                    <li><a href="tools.html">Công cụ</a></li>
-                    <li><a href="nutrition-info.html">Thông tin dinh dưỡng</a></li>
-                    <li><a href="contact.html">Liên hệ</a></li>
-                </ul>
-            </div>
-            <div class="footer-section tools">
-                <h4>Công cụ phổ biến</h4>
-                <ul>
-                    <li><a href="tools.html#bmi">Tính BMI</a></li>
-                    <li><a href="tools.html#calories">Tính calo</a></li>
-                    <li><a href="tools.html#meal-plan">Thực đơn cá nhân</a></li>
-                    <li><a href="tools.html#health-tracker">Theo dõi sức khỏe</a></li>
-                </ul>
-            </div>
-            <div class="footer-section connect">
-                <h4>Kết nối với chúng tôi</h4>
-                <div class="social-icons">
-                    <a href="#"><img src="../images/icons/facebook.svg" alt="Facebook"></a>
-                    <a href="#"><img src="../images/icons/instagram.svg" alt="Instagram"></a>
-                    <a href="#"><img src="../images/icons/youtube.svg" alt="YouTube"></a>
-                </div>
-                <form class="newsletter">
-                    <input type="email" placeholder="Nhập email của bạn">
-                    <button type="submit">Đăng ký</button>
-                </form>
-            </div>
+      <div class="footer-content">
+        <div class="footer-section about">
+          <h4>Về NutriMax</h4>
+          <p>Đồng hành cùng bạn trên hành trình dinh dưỡng lành mạnh</p>
+          <p>Địa chỉ: 123 Đường ABC, Quận XYZ, TP. HCM</p>
+          <p>Email: info@nutrimax.com</p>
+          <p>Hotline: 0123 456 789</p>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 NutriMax. All rights reserved.</p>
-            <a href="terms.html">Điều khoản sử dụng</a>
-            <a href="privacy.html">Chính sách bảo mật</a>
+        <div class="footer-section links">
+          <h4>Liên kết nhanh</h4>
+          <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="tools.html">Công cụ</a></li>
+            <li><a href="nutrition-info.html">Thông tin dinh dưỡng</a></li>
+            <li><a href="contact.html">Liên hệ</a></li>
+          </ul>
         </div>
+        <div class="footer-section tools">
+          <h4>Công cụ phổ biến</h4>
+          <ul>
+            <li><a href="tools.html#bmi">Tính BMI</a></li>
+            <li><a href="tools.html#calories">Tính calo</a></li>
+            <li><a href="tools.html#meal-plan">Thực đơn cá nhân</a></li>
+            <li><a href="tools.html#health-tracker">Theo dõi sức khỏe</a></li>
+          </ul>
+        </div>
+        <div class="footer-section connect">
+          <h4>Kết nối với chúng tôi</h4>
+          <div class="social-icons">
+            <a href="#"
+              ><img src="../images/icons/facebook.svg" alt="Facebook"
+            /></a>
+            <a href="#"
+              ><img src="../images/icons/instagram.svg" alt="Instagram"
+            /></a>
+            <a href="#"
+              ><img src="../images/icons/youtube.svg" alt="YouTube"
+            /></a>
+          </div>
+          <form class="newsletter">
+            <input type="email" placeholder="Nhập email của bạn" />
+            <button type="submit">Đăng ký</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 NutriMax. All rights reserved.</p>
+        <a href="terms.html">Điều khoản sử dụng</a>
+        <a href="privacy.html">Chính sách bảo mật</a>
+      </div>
     </footer>
-</body>
+  </body>
 </html>

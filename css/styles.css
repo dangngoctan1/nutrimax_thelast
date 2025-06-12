@@ -345,7 +345,6 @@ footer::before {
 .social-icons img {
   width: 20px;
   height: 20px;
-  filter: brightness(0) invert(1);
 }
 
 .footer-bottom {
@@ -427,4 +426,93 @@ footer::before {
 
 .pulse {
   animation: pulse 2s infinite;
+}
+
+/* Dropdown Menu Styles */
+header nav ul li.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+header nav ul li .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--white);
+  min-width: 260px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  border-radius: 8px;
+  margin-top: 10px;
+  border: 1px solid var(--light-gray);
+  overflow: hidden; /* Ensures child elements conform to border-radius */
+}
+
+header nav ul li .dropdown-content a {
+  color: var(--dark-gray);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-size: 16px;
+  border-radius: 0;
+  background-color: transparent;
+}
+
+header nav ul li .dropdown-content a:hover {
+  background-color: var(--primary-green);
+  color: var(--white);
+}
+
+header nav ul li.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Scrolled header dropdown styles */
+header.scrolled nav ul li .dropdown-content {
+  background-color: var(--dark-green);
+  border-color: var(--primary-green);
+}
+
+header.scrolled nav ul li .dropdown-content a {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+header.scrolled nav ul li .dropdown-content a:hover {
+  background-color: var(--primary-green);
+  color: var(--white);
+}
+
+/* Custom styles for the nav button */
+header nav ul li a.btn.primary {
+  color: var(--white);
+  font-size: 16px;
+  /* Adjust padding to better fit the nav bar */
+  padding: 10px 22px;
+  /* Override the transparent background for normal links */
+  background: linear-gradient(
+    135deg,
+    var(--primary-green),
+    var(--accent-green)
+  );
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+header nav ul li a.btn.primary:hover {
+  color: var(--white);
+  background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+}
+
+/* Style for the nav button when header is scrolled */
+header.scrolled nav ul li a.btn.primary {
+  /* Change color on scroll to stand out from the new green background */
+  background: linear-gradient(135deg, var(--orange), #ff6f00);
+  color: var(--white);
+  box-shadow: none;
+}
+
+header.scrolled nav ul li a.btn.primary:hover {
+  background: linear-gradient(135deg, #f57c00, var(--orange));
+  transform: translateY(0); /* Disable the lift effect on scrolled header */
 }

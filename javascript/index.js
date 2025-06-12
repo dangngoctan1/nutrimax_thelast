@@ -147,23 +147,46 @@ mealItems.addEventListener("click", function (e) {
   }
 });
 
-// Sự kiện cho Carousel
-function showNextImage() {
-  carouselImages[currentIndex].style.display = "none";
-  currentIndex = (currentIndex + 1) % carouselImages.length;
-  carouselImages[currentIndex].style.display = "block";
+// --- LOGIC MỚI CHO CAROUSEL ---
+const carouselContainer = document.querySelector(".carousel-container");
+
+if (carouselContainer && carouselImages.length > 0) {
+  let currentIndex = 0;
+  const totalImages = carouselImages.length;
+  let autoSlideInterval;
+
+  // Hàm cập nhật vị trí của carousel
+  function updateCarousel() {
+    carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  function showNextImage() {
+    currentIndex = (currentIndex + 1) % totalImages;
+    updateCarousel();
+  }
+
+  function showPrevImage() {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+    updateCarousel();
+  }
+
+  function startAutoSlide() {
+    clearInterval(autoSlideInterval);
+
+    autoSlideInterval = setInterval(showNextImage, 1500);
+  }
+  nextButton.addEventListener("click", () => {
+    showNextImage();
+    startAutoSlide();
+  });
+
+  prevButton.addEventListener("click", () => {
+    showPrevImage();
+    startAutoSlide();
+  });
+
+  startAutoSlide();
 }
-setInterval(showNextImage, 1000);
-carouselImages.forEach(
-  (img, index) => (img.style.display = index === 0 ? "block" : "none")
-);
-prevButton.addEventListener("click", function () {
-  carouselImages[currentIndex].style.display = "none";
-  currentIndex =
-    (currentIndex - 1 + carouselImages.length) % carouselImages.length;
-  carouselImages[currentIndex].style.display = "block";
-});
-nextButton.addEventListener("click", showNextImage);
 
 // Sự kiện cho bộ lọc (Filter Tabs)
 function filterFoods() {

@@ -182,24 +182,53 @@ const foods = [
 
 window.foods = foods;
 
-// Đảm bảo mã chạy sau khi toàn bộ HTML đã được tải
 document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector("header");
 
-  // Kiểm tra xem header có tồn tại không để tránh lỗi
-  if (!header) {
-    return;
+  // Header scroll effect logic
+  if (header) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
   }
 
-  // Lắng nghe sự kiện cuộn của cửa sổ
-  window.addEventListener("scroll", () => {
-    // Nếu vị trí cuộn theo chiều dọc lớn hơn 50px
-    if (window.scrollY > 50) {
-      // Thêm lớp 'scrolled' vào header
-      header.classList.add("scrolled");
-    } else {
-      // Ngược lại, xóa lớp 'scrolled' khỏi header
-      header.classList.remove("scrolled");
+  // --- Dropdown Menu Logic ---
+  const dropdown = document.querySelector(".dropdown");
+
+  if (dropdown) {
+    const dropbtn = dropdown.querySelector(".dropbtn");
+    const dropdownContent = dropdown.querySelector(".dropdown-content");
+
+    dropbtn.addEventListener("click", function (event) {
+      // If on tools.html, prevent the link from reloading the page
+      if (window.location.pathname.includes("/tools.html")) {
+        event.preventDefault();
+      }
+      // Stop the click from bubbling up to the window listener
+      event.stopPropagation();
+      // Toggle the .show class to display/hide the dropdown
+      dropdownContent.classList.toggle("show");
+    });
+
+    // Close dropdown when a link inside it is clicked
+    dropdownContent.addEventListener("click", function (event) {
+      if (event.target.tagName === "A") {
+        dropdownContent.classList.remove("show");
+      }
+    });
+  }
+
+  // Close the dropdown if the user clicks anywhere outside of it
+  window.addEventListener("click", function (event) {
+    const dropdownContent = document.querySelector(".dropdown-content");
+    if (dropdownContent && dropdownContent.classList.contains("show")) {
+      if (!event.target.closest(".dropdown")) {
+        dropdownContent.classList.remove("show");
+      }
     }
   });
 });
